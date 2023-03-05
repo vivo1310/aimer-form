@@ -88,7 +88,7 @@ function App() {
           <Controller
             name="phoneNumber"
             control={control}
-            render={({ field }) => <Input placeholder="Contact Number" pattern="[0-9]*" {...field} />}
+            render={({ field }) => <Input placeholder="Contact Number" inputProps={{ inputMode: 'numeric' }} {...field} type='tel' />}
           />
           <Controller
             name="checkinDateTime"
@@ -108,17 +108,17 @@ function App() {
           <Controller
             name="numberOfGuess"
             control={control}
-            render={({ field }) => <Input placeholder="Number of Guess" {...field} inputmode='numeric' type='number' />}
+            render={({ field }) => <Input placeholder="Number of Guess" {...field} inputProps={{ inputMode: 'numeric' }} type='number' />}
           />
           <Controller
             name="totalPrice"
             control={control}
-            render={({ field }) => <Input placeholder="Total Amount" {...field} inputmode='numeric' type='number' />}
+            render={({ field }) => <Input placeholder="Total Amount" {...field} inputProps={{ inputMode: 'numeric' }} type='number' />}
           />
           <Controller
             name="paidAmount"
             control={control}
-            render={({ field }) => <Input placeholder="Paid Amount" {...field} pattern="[0-9]*" type='number' />}
+            render={({ field }) => <Input placeholder="Paid Amount" {...field} inputProps={{ inputMode: 'numeric' }} type='number' />}
           />
           <Controller
             name="remarks"
