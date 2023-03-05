@@ -54,9 +54,9 @@ function App() {
         Còn thanh toán: {remainingAmount} đồng <br />
         <br />
 
-        {data.remarks}
-        --<br />
+        {data.remarks}<br />
 
+        --<br />
         Địa chỉ: 13 Trần Khánh Dư (nối dài) - P.8 - Đà Lạt <br />
         Sđt: 0933 842 420 <br />
         <br />
