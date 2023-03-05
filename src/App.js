@@ -54,8 +54,9 @@ function App() {
         Còn thanh toán: {remainingAmount} đồng <br />
         <br />
 
-        {data.remarks} <br />
-        <br />
+        {data.remarks}
+        --<br />
+
         Địa chỉ: 13 Trần Khánh Dư (nối dài) - P.8 - Đà Lạt <br />
         Sđt: 0933 842 420 <br />
         <br />
@@ -124,7 +125,7 @@ function App() {
           <Controller
             name="remarks"
             control={control}
-            render={({ field }) => <Input placeholder="Remarks" {...field} />}
+            render={({ field }) => <Input multiline placeholder="Remarks" {...field} />}
           />
           <Button type="submit" variant="contained">Create Note</Button>
         </Box>
