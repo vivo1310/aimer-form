@@ -1,10 +1,12 @@
 /**
  * TODO:
+ * - validation for remainingAmount
  * - aimer logo
+ * - add number of guess
  */
 // import logo from './logo.svg';
 import './App.css';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {
   Box,
   Input,
@@ -15,10 +17,11 @@ import {
   // CardActions,
   Button
 } from '@mui/material'
+import moment from 'moment'
 import { useForm, Controller } from "react-hook-form";
 
 function App() {
-  const { control, handleSubmit } = useForm({
+  const { control, watch, handleSubmit } = useForm({
     defaultValues: {
       fullname: '',
       phoneNumber: '',
@@ -27,26 +30,28 @@ function App() {
       roomType: '',
       totalPrice: '',
       paidAmount: '',
-      remainingAmount: '',
     }
   });
+
   const [cardContent, setCardContent] = useState('')
   const onSubmit = data => {
+    const remainingAmount = new Intl.NumberFormat('vi-VN').format(data.totalPrice - data.paidAmount)
     data.totalPrice = new Intl.NumberFormat('vi-VN').format(data.totalPrice)
     data.paidAmount = new Intl.NumberFormat('vi-VN').format(data.paidAmount)
-    data.remainingAmount = new Intl.NumberFormat('vi-VN').format(data.remainingAmount)
+    data.checkinDateTime = moment(data.checkinDateTi8me).format("DD/MM/YY Hg");
+    data.checkoutDateTime = moment(data.checkoutDateTi8me).format("DD/MM/YY Hg");
 
     setCardContent(
       <div>
         Aimer.dalat <br />
         {data.fullname} <br />
         Sđt : {data.phoneNumber} <br />
-        Checkin: {data.checkin} <br />
-        Checkout: {data.checkout} <br />
+        Checkin: {data.checkinDateTime} <br />
+        Checkout: {data.checkoutDatetime} <br />
         {data.roomType}: {data.totalPrice} đồng <br /> <br />
 
         Khách đã cọc: {data.paidAmount} đồng <br />
-        Còn thanh toán: {data.remainingAmount} đồng <br />
+        Còn thanh toán: {remainingAmount} đồng <br />
         <br />
         Địa chỉ: 13 Trần Khánh Dư (nối dài) - P.8 - Đà Lạt <br />
         Sđt: 0933 842 420 <br />
@@ -72,7 +77,6 @@ function App() {
             display: 'flex',
             flexDirection: 'column',
             gap: 3,
-
           }}>
           <Controller
             name="fullname"
@@ -82,7 +86,7 @@ function App() {
           <Controller
             name="phoneNumber"
             control={control}
-            render={({ field }) => <Input placeholder="Số điện thoại" {...field} />}
+            render={({ field }) => <Input placeholder="Số điện thoại" pattern="[0-9]*" {...field} />}
           />
           <Controller
             name="checkinDateTime"
@@ -92,7 +96,7 @@ function App() {
           <Controller
             name="checkoutDateTime"
             control={control}
-            render={({ field }) => <Input placeholder="Checkout" {...field} />}
+            render={({ field }) => <Input placeholder="Checkout" {...field} type='datetime-local' />}
           />
           <Controller
             name="roomType"
@@ -102,18 +106,12 @@ function App() {
           <Controller
             name="totalPrice"
             control={control}
-            render={({ field }) => <Input placeholder="Tổng tiền" {...field} type='number' />}
+            render={({ field }) => <Input placeholder="Tổng tiền" {...field} pattern="[0-9]*" type='number' />}
           />
           <Controller
             name="paidAmount"
             control={control}
-            render={({ field }) => <Input placeholder="Khách đã cọc" {...field} type='number' />}
-          />
-
-          <Controller
-            name="remainingAmount"
-            control={control}
-            render={({ field }) => <Input placeholder="Còn thanh toán" {...field} type='number' />}
+            render={({ field }) => <Input placeholder="Khách đã cọc" {...field} pattern="[0-9]*" type='number' />}
           />
           <Button type="submit" variant="contained">Tạo note</Button>
         </Box>
