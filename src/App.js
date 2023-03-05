@@ -2,7 +2,7 @@
  * TODO:
  * - aimer logo
  */
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react'
 import {
@@ -12,7 +12,7 @@ import {
   Divider,
   Card,
   CardContent,
-  CardActions,
+  // CardActions,
   Button
 } from '@mui/material'
 import { useForm, Controller } from "react-hook-form";
