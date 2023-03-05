@@ -39,11 +39,12 @@ function App() {
     data.paidAmount = new Intl.NumberFormat('vi-VN').format(data.paidAmount)
     data.checkinDateTime = moment(data.checkinDateTime).format("DD/MM/YY Hg");
     data.checkoutDateTime = moment(data.checkoutDateTime).format("DD/MM/YY Hg");
+    const fullname = data.fullname.toLowerCase().split(" ").map((word) => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')
 
     setCardContent(
       <div>
         Aimer.dalat <br />
-        {data.fullname} <br />
+        {fullname} <br />
         Sđt : {data.phoneNumber} <br />
         Checkin: {data.checkinDateTime} <br />
         Checkout: {data.checkoutDateTime} <br />
