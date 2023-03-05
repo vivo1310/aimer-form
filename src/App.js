@@ -1,8 +1,6 @@
 /**
  * TODO:
- * - validation for remainingAmount
  * - aimer logo
- * - add number of guess
  */
 // import logo from './logo.svg';
 import './App.css';
@@ -28,6 +26,7 @@ function App() {
       checkinDateTime: '',
       checkoutDateTime: '',
       roomType: '',
+      numberOfGuess: '',
       totalPrice: '',
       paidAmount: '',
     }
@@ -48,7 +47,7 @@ function App() {
         Sđt : {data.phoneNumber} <br />
         Checkin: {data.checkinDateTime} <br />
         Checkout: {data.checkoutDatetime} <br />
-        {data.roomType}: {data.totalPrice} đồng <br /> <br />
+        {data.roomType} {data.numberOfGuess} người: {data.totalPrice} đồng <br /> <br />
 
         Khách đã cọc: {data.paidAmount} đồng <br />
         Còn thanh toán: {remainingAmount} đồng <br />
@@ -81,39 +80,49 @@ function App() {
           <Controller
             name="fullname"
             control={control}
-            render={({ field }) => <Input placeholder="Họ Tên" {...field} />}
+            render={({ field }) => <Input placeholder="Full Name" {...field} />}
           />
           <Controller
             name="phoneNumber"
             control={control}
-            render={({ field }) => <Input placeholder="Số điện thoại" pattern="[0-9]*" {...field} />}
+            render={({ field }) => <Input placeholder="Contact Number" pattern="[0-9]*" {...field} />}
           />
           <Controller
             name="checkinDateTime"
             control={control}
-            render={({ field }) => <Input placeholder="Checkin" {...field} type='datetime-local' />}
+            render={({ field }) => <Input placeholder="Check in Date time" {...field} type='datetime-local' />}
           />
           <Controller
             name="checkoutDateTime"
             control={control}
-            render={({ field }) => <Input placeholder="Checkout" {...field} type='datetime-local' />}
+            render={({ field }) => <Input placeholder="Check out Date time" {...field} type='datetime-local' />}
           />
           <Controller
             name="roomType"
             control={control}
-            render={({ field }) => <Input placeholder="Loại phòng" {...field} />}
+            render={({ field }) => <Input placeholder="Room Type" {...field} />}
+          />
+          <Controller
+            name="numberOfGuess"
+            control={control}
+            render={({ field }) => <Input placeholder="Number of Guess" {...field} inputmode='numeric' type='number' />}
           />
           <Controller
             name="totalPrice"
             control={control}
-            render={({ field }) => <Input placeholder="Tổng tiền" {...field} pattern="[0-9]*" type='number' />}
+            render={({ field }) => <Input placeholder="Total Amount" {...field} inputmode='numeric' type='number' />}
           />
           <Controller
             name="paidAmount"
             control={control}
-            render={({ field }) => <Input placeholder="Khách đã cọc" {...field} pattern="[0-9]*" type='number' />}
+            render={({ field }) => <Input placeholder="Paid Amount" {...field} pattern="[0-9]*" type='number' />}
           />
-          <Button type="submit" variant="contained">Tạo note</Button>
+          <Controller
+            name="remarks"
+            control={control}
+            render={({ field }) => <Input placeholder="Remarks" {...field} />}
+          />
+          <Button type="submit" variant="contained">Create Note</Button>
         </Box>
       </form>
 
