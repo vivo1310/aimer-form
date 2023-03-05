@@ -37,8 +37,8 @@ function App() {
     const remainingAmount = new Intl.NumberFormat('vi-VN').format(data.totalPrice - data.paidAmount)
     data.totalPrice = new Intl.NumberFormat('vi-VN').format(data.totalPrice)
     data.paidAmount = new Intl.NumberFormat('vi-VN').format(data.paidAmount)
-    data.checkinDateTime = moment(data.checkinDateTi8me).format("DD/MM/YY Hg");
-    data.checkoutDateTime = moment(data.checkoutDateTi8me).format("DD/MM/YY Hg");
+    data.checkinDateTime = moment(data.checkinDateTime).format("DD/MM/YY Hg");
+    data.checkoutDateTime = moment(data.checkoutDateTime).format("DD/MM/YY Hg");
 
     setCardContent(
       <div>
@@ -46,11 +46,14 @@ function App() {
         {data.fullname} <br />
         Sđt : {data.phoneNumber} <br />
         Checkin: {data.checkinDateTime} <br />
-        Checkout: {data.checkoutDatetime} <br />
+        Checkout: {data.checkoutDateTime} <br />
         {data.roomType} {data.numberOfGuess} người: {data.totalPrice} đồng <br /> <br />
 
         Khách đã cọc: {data.paidAmount} đồng <br />
         Còn thanh toán: {remainingAmount} đồng <br />
+        <br />
+
+        {data.remarks} <br />
         <br />
         Địa chỉ: 13 Trần Khánh Dư (nối dài) - P.8 - Đà Lạt <br />
         Sđt: 0933 842 420 <br />
