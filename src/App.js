@@ -4,7 +4,7 @@
  */
 // import logo from './logo.svg';
 import './App.css';
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import {
   Box,
   Input,
@@ -19,7 +19,7 @@ import moment from 'moment'
 import { useForm, Controller } from "react-hook-form";
 
 function App() {
-  const { control, watch, handleSubmit } = useForm({
+  const { control, handleSubmit } = useForm({
     defaultValues: {
       fullname: '',
       phoneNumber: '',
